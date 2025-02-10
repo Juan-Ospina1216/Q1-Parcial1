@@ -44,12 +44,10 @@ int main(int argc, char*argv[]){
 
 void*montecarlo(void*id){
     int rango = *(int*) id;
-    int local_m = n / cant_hilos;
-    int inicio = rango * local_m;
-    int fin = inicio + local_m;  //Asignar rango para cada hilo
+    int fin = n / cant_hilos;
     int a = -1, b = 1;
     double en_circulo = 0;
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < fin; i++){
         double x = a + (static_cast<double>(rand())/RAND_MAX) * (b-a);  //Generar numero aleatorio en [-1,1]
         double y = a + (static_cast<double>(rand())/RAND_MAX) * (b-a);
         double distancia = (x*x) + (y*y);  //distancia desde el origen
